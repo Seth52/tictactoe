@@ -1,6 +1,41 @@
 
+function test(){
+    for(let i=0;i < 9; i++){
+        
+    }
+}
 
-const gameboardModule =(() =>{
+const gameboard =["","","","","","","","",""];
+let counter = 2;
+
+let xo = document.getElementById('container');
+xo.addEventListener('click',function(e){
+   
+    if(e.target.className ==='tic'){
+        counter +=1; 
+        console.log(counter);
+        let gamepiece
+       if(counter % 2 === 1){
+             gamepiece = 'X';
+            console.log(gamepiece)
+            
+        }
+       else {gamepiece ='O';
+    console.log(gamepiece);}
+
+        for(let i=0; i<9; i++){
+            if(e.target.id===`${i}`){
+                let f = document.getElementById(i);
+                f.innerText = gamepiece;
+                gameboard[i]=gamepiece;
+            }
+
+        }
+    }
+})
+
+
+/*const gameboardModule =(() =>{
     
     const gameboard = [
         [0,0,0],
@@ -15,26 +50,23 @@ const gameboardModule =(() =>{
 
 })();
 
-let xo = document.getElementById('container');
-xo.addEventListener('click',function(e){
-    if(e==='')
-})
 
 
 //divs with borders only on certain spots?
 //console.log(`${gameboard.join('\n')}`);
 
+*/
 
 
 /*let test = document.getElementById('body');
 let y = document.createTextNode(`${gameboard.join('\n')}`);
 test.append(y);*/
-
+/*
 function createPlayer(name){
     name
     
 
-};
+};*/
 
 
 
