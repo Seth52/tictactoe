@@ -1,21 +1,20 @@
 
-function test(){
-    for(let i=0;i < 9; i++){
-        
-    }
-}
 
-const gameboard =["","","","","","","","",""];
+const gameboard =
+["","","",
+ "","","",
+ "","",""];
 let counter = 2;
 
 let xo = document.getElementById('container');
 xo.addEventListener('click',function(e){
-   
-    if(e.target.className ==='tic'){
+   let number = e.target.id;
+    if(e.target.className ==='tic' &&gameboard[number]===""){
         counter +=1; 
+        console.log(e);
         console.log(counter);
         let gamepiece
-       if(counter % 2 === 1){
+       if(counter % 2 === 1 ){
              gamepiece = 'X';
             console.log(gamepiece)
             
@@ -28,6 +27,9 @@ xo.addEventListener('click',function(e){
                 let f = document.getElementById(i);
                 f.innerText = gamepiece;
                 gameboard[i]=gamepiece;
+                if(gameboard[0] && gameboard[1] && gameboard[2] === "X"){
+                    console.log('x wins');
+                }
             }
 
         }
