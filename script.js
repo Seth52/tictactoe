@@ -13,10 +13,14 @@ xo.addEventListener('click',function(e){
         counter +=1; 
         console.log(e);
         console.log(counter);
+
+        
+        
         let gamepiece
        if(counter % 2 === 1 ){
              gamepiece = 'X';
             console.log(gamepiece)
+            
             
         }
        else {gamepiece ='O';
@@ -27,9 +31,8 @@ xo.addEventListener('click',function(e){
                 let f = document.getElementById(i);
                 f.innerText = gamepiece;
                 gameboard[i]=gamepiece;
-                if(gameboard[0] && gameboard[1] && gameboard[2] === "X"){
-                    console.log('x wins');
-                }
+                winTester();
+                
             }
 
         }
@@ -37,38 +40,65 @@ xo.addEventListener('click',function(e){
 })
 
 
-/*const gameboardModule =(() =>{
+
+
+function winTester(){
+    //counter for full board -- if board not full run wincheck
+    if(counter < 11){
     
-    const gameboard = [
-        [0,0,0],
-        [0,0,0],
-        [0,0,0]
-      
-               
-        ];
-    for(let i=0; i<gameboard.length; i++){
-        console.log(gameboard[i]);
+        for(i=0;i<3;i++){
+    //row win
+    if(gameboard[i]===gameboard[i+3] && gameboard[i]===gameboard[i+6]&& (gameboard[i]==='X' || gameboard[i]==='O')){
+        console.log('up/down win');
+        let z=gameboard[i];
+        declareWinner(z);
+    break;
+}
+  //across win
+    else if(gameboard[i*3]===gameboard[i*3+1] && gameboard[i*3]===gameboard[i*3+2] && (gameboard[i*3]==='X' || gameboard[i*3]==='O')){
+        console.log(gameboard[i*3],gameboard[i*3+1],gameboard[i*3+2])
+        console.log('across win');
+       let z=gameboard[i*3];
+       declareWinner(z);
+        break;
     }
-
-})();
-
-
-
-//divs with borders only on certain spots?
-//console.log(`${gameboard.join('\n')}`);
-
-*/
-
-
-/*let test = document.getElementById('body');
-let y = document.createTextNode(`${gameboard.join('\n')}`);
-test.append(y);*/
-/*
-function createPlayer(name){
-    name
+    //diagonal win
+    else if(gameboard[0]===gameboard[4]&& gameboard[0]===gameboard[8]&& (gameboard[0]==='X' || gameboard[0]==='O')){
+    console.log('diag win');
+        let z=gameboard[0];
+        declareWinner(z);
     
+    break;}
+        else if(gameboard[2]===gameboard[4] && gameboard[2]==gameboard[6]&& (gameboard[2]==='X' || gameboard[2]==='O')){
+            console.log('diag win 2');
+           let z=gameboard[2];
+           declareWinner(z);
+           
+            break;
+        }
+}
+    }
+    else (console.log('it b a draw'));
+   
+}
 
-};*/
+
+function declareWinner(z){
+    let me=document.getElementById('body');
+    let winnerDiv=document.createElement('div');
+    const winnerText =document.createTextNode(z +" is the winner");
+    winnerDiv.id="winner";
+    winnerDiv.appendChild(winnerText);
+    me.replaceChild(winnerDiv, me.childNodes[3]);
+}
+
+
+
+
+   
+
+
+
 
 
 
