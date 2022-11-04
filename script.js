@@ -1,5 +1,5 @@
 
-
+let defaultDomState = document.body.innerHTML;
 const gameboard =
 ["","","",
  "","","",
@@ -78,7 +78,15 @@ function winTester(){
         }
 }
     }
-    else (console.log('it b a draw'));
+    //draw output
+    else {let me=document.getElementById('body');
+           let drawDiv=document.createElement('div');
+           const drawText = document.createTextNode('The Match Was a Draw');
+           drawDiv.id="winner";
+           drawDiv.appendChild(drawText);
+           me.replaceChild(drawDiv, me.childNodes[3]);
+         }
+        
    
 }
 
@@ -94,6 +102,21 @@ function declareWinner(z){
 
 
 
+//reset button 
+let restart = document.getElementById('restart');
+restart.addEventListener('click', function(){
+let resetGrid = document.getElementById('container').childNodes;
+for(let i=0; i<resetGrid.length;i++){
+   resetGrid[i].innerText="";
+   counter =2;
+   gameboard.fill("");
+  
+   }  
+    
+
+}
+
+)
 
    
 
