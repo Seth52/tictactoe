@@ -90,14 +90,16 @@ function winTester(){
    
 }
 
-
 function declareWinner(z){
     let me=document.getElementById('body');
     let winnerDiv=document.createElement('div');
     const winnerText =document.createTextNode(z +" is the winner");
     winnerDiv.id="winner";
     winnerDiv.appendChild(winnerText);
-    me.replaceChild(winnerDiv, me.childNodes[3]);
+    //me.replaceChild(winnerDiv, me.childNodes[3]);
+    let contained = document.getElementById('container');
+    contained.style.display = 'none';
+    me.insertBefore(winnerDiv,contained);
 }
 
 
@@ -112,8 +114,10 @@ for(let i=0; i<resetGrid.length;i++){
    gameboard.fill("");
   
    }  
-    
-
+    let contained = document.getElementById('container');
+    contained.style.display = 'grid';
+let winnerRemove = document.getElementById('winner');
+winnerRemove.remove();
 }
 
 )
