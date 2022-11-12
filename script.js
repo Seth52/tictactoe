@@ -44,7 +44,7 @@ xo.addEventListener('click',function(e){
 
 function winTester(){
     //counter for full board -- if board not full run wincheck
-    if(counter < 11){
+    if(counter <= 11){
     
         for(i=0;i<3;i++){
     //row win
@@ -76,16 +76,29 @@ function winTester(){
            
             break;
         }
+       else if(counter===11) {let me=document.getElementById('body');
+       let drawDiv=document.createElement('div');
+       const drawText = document.createTextNode('The Match Was a Draw');
+       drawDiv.id="winner";
+       drawDiv.appendChild(drawText);
+       //me.replaceChild(drawDiv, me.childNodes[3]);
+       let contained = document.getElementById('container');
+    contained.style.display = 'none';
+    me.insertBefore(drawDiv,contained);
+       break;
+
+    }
+       
 }
     }
     //draw output
-    else {let me=document.getElementById('body');
+   /* else if(counter===11) {let me=document.getElementById('body');
            let drawDiv=document.createElement('div');
            const drawText = document.createTextNode('The Match Was a Draw');
            drawDiv.id="winner";
            drawDiv.appendChild(drawText);
            me.replaceChild(drawDiv, me.childNodes[3]);
-         }
+         }*/
         
    
 }
